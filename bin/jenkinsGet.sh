@@ -13,10 +13,13 @@ ARTIFACT_PATTERN=$5
 function jenkinsGet (){
     # ensure dependent binaries exist
     if ! [ -x "$(command -v curl)" ]; then
-      sudo apt install -y curl
+      brew install -y curl
     fi
     if ! [ -x "$(command -v jq)" ]; then
-      sudo apt install -y jq
+      brew install -y jq
+    fi
+    if ! [ -x "$(command -v jq)" ]; then
+      brew install -y wget
     fi
 
     JSON=`curl -s "http://$JENKINS/job/$JOB/job/$BRANCH/lastSuccessfulBuild/api/json?pretty=true"`
