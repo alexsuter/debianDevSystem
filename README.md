@@ -9,8 +9,9 @@ The script are designed to work for me in my current working environment ... fee
 - Mac High Sierra (10.13.6)
 
 ## How to use
-1. clone or download this repo into your user home (e.g. /home/rew/debianDevSystem)
-2. run a cool composite installer script `debAdmin.sh`, `debCommunicator.sh` or `debEnv.sh`
-3. manually add the line `export PATH=$PATH:/home/rew/debianDevSystem/bin` to `~/.bashrc`.
-4. optionally copy the `.bash_aliases` file into your user home dir.
-5. use the installed tools...
+1. install [homebrew](https://brew.sh/): `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+2. clone or download this repo into your user home (e.g. /home/rew/debianDevSystem)
+3. run a cool composite installer script `debAdmin.sh`, `debCommunicator.sh` or `debEnv.sh`
+4. manually add the line `export PATH=$PATH:/home/rew/debianDevSystem/bin` to `~/.bashrc`.
+5. optionally copy the `.bash_aliases` file into your user home dir.
+6. use the installed tools...
