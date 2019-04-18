@@ -20,23 +20,23 @@ function jenkinsGet (){
     fi
 
     JSON=`curl -s "http://$JENKINS/job/$JOB/job/$BRANCH/lastSuccessfulBuild/api/json?pretty=true"`
-    ZIP=`echo $JSON | jq -r '.artifacts[].fileName' | grep $ARTIFACT_PATTERN`
-    REVISION=`echo $ZIP | grep -oP '[0-9]{10}'`
+    ZIP=`echo $JSON | jq -r '.artifacts[].fileName' | /usr/local/bin/ggrep $ARTIFACT_PATTERN`
+    REVISION=`echo $ZIP | /usr/local/bin/ggrep -oP '[0-9]{10}'`
     echo "found revision $REVISION"
 
-    PATH=`echo $JSON | jq -r '.artifacts[].relativePath' | grep $ARTIFACT_PATTERN`
+    PATH=`echo $JSON | jq -r '.artifacts[].relativePath' | /usr/local/bin/ggrep $ARTIFACT_PATTERN`
     URL=http://$JENKINS/job/$JOB/job/$BRANCH/lastSuccessfulBuild/artifact/$PATH
-    NEWZIP=`/usr/bin/wget $URL -P /tmp | grep 'saving to:.*'`
+    NEWZIP=`/usr/local/bin/wget $URL -P /tmp | /usr/local/bin/ggrep 'saving to:.*'`
     echo $NEWZIP
 
     echo "Downloaded $ZIP. Enter a description for this $ARTIFACT"
     read DESCRIPTION
 
 
-    UNPACKED="/mnt/data/axonIvyProducts/${ARTIFACT}_$REVISION-$DESCRIPTION"
+    UNPACKED="/Volumes/MacDev/axonIvyProducts/${ARTIFACT}_$REVISION-$DESCRIPTION"
     echo "Extracting to $UNPACKED"
     /usr/bin/unzip -q "/tmp/$ZIP" -d $UNPACKED
     cd $UNPACKED
-    `/usr/bin/nemo .`
+    #`/usr/bin/nemo .`
 }
 

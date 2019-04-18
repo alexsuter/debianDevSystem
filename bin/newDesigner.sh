@@ -2,7 +2,7 @@
 
 source jenkinsGet.sh
 
-JOB=ivy-core_product
+JOB=ivy-core_release-dev
 if [ ! -z "$1" ]
   then
     JOB=$1
@@ -11,6 +11,6 @@ fi
 JENKINS=zugprojenkins
 BRANCH=master
 ARTIFACT=designer
-ARTIFACT_PATTERN=AxonIvyDesigner.*_Linux_x64.zip
+ARTIFACT_PATTERN=AxonIvyDesigner.*_MacOSX-BETA_x64.zip
 
 jenkinsGet $JENKINS $JOB $BRANCH $ARTIFACT $ARTIFACT_PATTERN
