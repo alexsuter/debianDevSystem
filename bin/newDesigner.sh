@@ -8,8 +8,13 @@ if [ ! -z "$1" ]
     JOB=$1
 fi
 
-JENKINS=zugprojenkins
 BRANCH=master
+if [ ! -z "$2" ]
+  then
+    BRANCH=$2
+fi
+
+JENKINS=zugprojenkins
 ARTIFACT=designer
 ARTIFACT_PATTERN=AxonIvyDesigner.*_MacOSX-BETA_x64.zip
 
